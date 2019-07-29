@@ -1,2 +1,2 @@
 # project-ai-rc-car
-Repository for the self-driving RC-Car
+Repository for the webapp of the self-driving RC-Car
