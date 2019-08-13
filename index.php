@@ -11,7 +11,7 @@
 <div class="turnDeviceNotification"></div>
 <!--Testje voor later-->
 <?php
-echo "Hello Change from PHP";
+echo "Hello Legende from PHP";
 ?>
 <div class="main">
 	<div class="container">
