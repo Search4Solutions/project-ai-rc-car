@@ -11,7 +11,7 @@
 <div class="turnDeviceNotification"></div>
 <!--Testje voor later-->
 <?php
-echo "Hello world from PHP";
+echo "Hello Change from PHP";
 ?>
 <div class="main">
 	<div class="container">
