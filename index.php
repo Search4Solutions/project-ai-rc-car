@@ -73,7 +73,7 @@
 					$context  = stream_context_create($options);
 					$result = file_get_contents($url, false, $context);
 					if ($result === FALSE) { 
-						echo('Error has occurred in get_contents'); 
+						echo("<div class=\"console\"> ERROR: Cannot reach API. </div>"); 
 					}
 					else { echo("<div class=\"console\"> $result </div>"); }
 				}
