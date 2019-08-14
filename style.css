@@ -66,3 +66,11 @@ html, body {
   background-image:url('picar/turn-device.png');
   background-size:cover;
 }
+
+.console {
+	background-color: black;
+	color: white;
+	font-family: "Consolas";
+	margin-top: 5%;
+	padding: 5%;
+}

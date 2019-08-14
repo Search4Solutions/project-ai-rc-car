@@ -45,6 +45,9 @@
 					<input type="hidden" name="direction" value="reverse">
 				</form>
 			</div>
+			<div class="console">
+				Test text voor de console.
+			</div>
         </div>
     </div>
 </div>
@@ -77,10 +80,8 @@
 		$result = file_get_contents($url, false, $context);
 		if ($result === FALSE) { 
 			echo('Error has occurred in get_contents'); 
-			var_dump($_POST);
 		}
-
-		echo($result);
+		else { echo("<div class=\"console\"> $result </div>"); }
 	}
 ?>
 </body>
