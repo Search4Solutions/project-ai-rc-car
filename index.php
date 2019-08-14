@@ -19,10 +19,12 @@
 		if(isset($_POST['direction']))
 		{
 			$data = array('direction' => $_POST['direction']);
+			$url = $url_direction;
 		}
 		elseif(isset($_POST['speed']))
 		{
 			$data = array('speed' => $_POST['speed']);
+			$url = $url_speed;
 		}
 
 		// use key 'http' even if you send the request to https://...
