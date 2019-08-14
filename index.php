@@ -45,44 +45,41 @@
 					<input type="hidden" name="direction" value="reverse">
 				</form>
 			</div>
-			<div class="console">
-				Test text voor de console.
-			</div>
+			<?php 
+				if ($_SERVER["REQUEST_METHOD"] == "POST")
+				{
+					$url_direction = 'http://80.57.208.36:5000/direction?apikey=2IdA7T9M4o';
+					$url_speed = 'http://80.57.208.36:5000/speed?apikey=2IdA7T9M4o';
+	
+					if(isset($_POST['direction']))
+					{
+						$data = array('direction' => $_POST['direction']);
+						$url = $url_direction;
+					}
+					elseif(isset($_POST['speed']))
+					{
+						$data = array('speed' => $_POST['speed']);
+						$url = $url_speed;
+					}
+
+					// use key 'http' even if you send the request to https://...
+					$options = array(
+						'http' => array(
+							'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+							'method'  => 'POST',
+							'content' => http_build_query($data)
+						)
+					);
+					$context  = stream_context_create($options);
+					$result = file_get_contents($url, false, $context);
+					if ($result === FALSE) { 
+						echo('Error has occurred in get_contents'); 
+					}
+					else { echo("<div class=\"console\"> $result </div>"); }
+				}
+			?>
         </div>
     </div>
 </div>
-<?php 
-	if ($_SERVER["REQUEST_METHOD"] == "POST")
-	{
-		$url_direction = 'http://80.57.208.36:5000/direction?apikey=2IdA7T9M4o';
-		$url_speed = 'http://80.57.208.36:5000/speed?apikey=2IdA7T9M4o';
-	
-		if(isset($_POST['direction']))
-		{
-			$data = array('direction' => $_POST['direction']);
-			$url = $url_direction;
-		}
-		elseif(isset($_POST['speed']))
-		{
-			$data = array('speed' => $_POST['speed']);
-			$url = $url_speed;
-		}
-
-		// use key 'http' even if you send the request to https://...
-		$options = array(
-			'http' => array(
-				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-				'method'  => 'POST',
-				'content' => http_build_query($data)
-			)
-		);
-		$context  = stream_context_create($options);
-		$result = file_get_contents($url, false, $context);
-		if ($result === FALSE) { 
-			echo('Error has occurred in get_contents'); 
-		}
-		else { echo("<div class=\"console\"> $result </div>"); }
-	}
-?>
 </body>
 </html>
