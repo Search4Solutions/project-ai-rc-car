@@ -9,15 +9,42 @@
 
 <body>
 <div class="turnDeviceNotification"></div>
-<!--Testje voor later-->
-<?php
-echo "Hello Legende from PHP";
+
+<?php 
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		$url_direction = 'http://80.57.208.36:5000/direction?apikey=2IdA7T9M4o';
+		$url_speed = 'http://80.57.208.36:5000/speed?apikey=2IdA7T9M4o';
+	
+		if(isset($_POST['direction'])
+		{
+			$data = array('direction' => $_POST['direction']);
+		}
+		elseif(isset($_POST['speed'])
+		{
+			$data = array('speed' => $_POST['speed']);
+		}
+
+		// use key 'http' even if you send the request to https://...
+		$options = array(
+			'http' => array(
+				'header'  => "Content-type: application/x-www-form-urlencoded",
+				'method'  => 'POST',
+				'content' => http_build_query($data)
+			)
+		);
+		$context  = stream_context_create($options);
+		$result = file_get_contents($url, false, $context);
+		if ($result === FALSE) { echo('Error has occurred in get_contents'); }
+
+		echo($result);
+	}
 ?>
 <div class="main">
 	<div class="container">
     	<div class="center">            
 			<div class="arrow-top"><a href="#"></a>
-				<form action="placeholder" method="post">
+				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 					<input type="image" src="picar/arrow-top.png" class="hovering" alt="Up">
 					<input type="hidden" name="direction" value="forward">
 				</form>
