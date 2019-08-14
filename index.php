@@ -16,11 +16,11 @@
 		$url_direction = 'http://80.57.208.36:5000/direction?apikey=2IdA7T9M4o';
 		$url_speed = 'http://80.57.208.36:5000/speed?apikey=2IdA7T9M4o';
 	
-		if(isset($_POST['direction'])
+		if(isset($_POST['direction']))
 		{
 			$data = array('direction' => $_POST['direction']);
 		}
-		elseif(isset($_POST['speed'])
+		elseif(isset($_POST['speed']))
 		{
 			$data = array('speed' => $_POST['speed']);
 		}
