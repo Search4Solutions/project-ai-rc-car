@@ -48,8 +48,8 @@
 			<?php 
 				if ($_SERVER["REQUEST_METHOD"] == "POST")
 				{
-					$url_direction = 'http://80.57.208.36:5000/direction?apikey=2IdA7T9M4o';
-					$url_speed = 'http://80.57.208.36:5000/speed?apikey=2IdA7T9M4o';
+					$url_direction = 'http://145.90.84.118:5000/direction?apikey=2IdA7T9M4o';
+					$url_speed = 'http://145.90.84.118:5000/speed?apikey=2IdA7T9M4o';
 	
 					if(isset($_POST['direction']))
 					{
