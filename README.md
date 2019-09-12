@@ -1,7 +1,7 @@
 # Project RC-Car web app
 The control panel of the RC car is built with HTML and a small script with PHP which ensures that the data is sent to the API. The application is hosted with the Azure Web Apps service. 
 
-#How to use
+# How to use
 There are two ways on how to use this web app:
 
 1. You can host it on Azure. This is the most convenient way as your web app is accessible from all over the world. Also it is very easy to integrate it with Azure DevOps for continuous delivery.
