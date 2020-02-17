@@ -24,6 +24,16 @@ data "azurerm_key_vault_secret" "secret_ad-client-secret" {
   vault_uri = data.azurerm_key_vault.keyvault.vault_uri
 }
 
+data "azurerm_key_vault_secret" "secret_rc-car-api-token" {
+  name = "rc-car-api-token"
+  vault_uri = data.azurerm_key_vault.keyvault.vault_uri
+}
+
+data "azurerm_key_vault_secret" "secret_rc-car-server-ip" {
+  name = "rc-car-server-ip"
+  vault_uri = data.azurerm_key_vault.keyvault.vault_uri
+}
+
 resource "azurerm_app_service_plan" "rc-sp-plan" {
   name                = "rc-car-appserviceplan"
   location            = azurerm_resource_group.rc-car.location
@@ -43,6 +53,11 @@ resource "azurerm_app_service" "example" {
   resource_group_name = azurerm_resource_group.rc-car.name
   app_service_plan_id = azurerm_app_service_plan.rc-sp-plan.id
 
+  app_settings = {
+    SERVER_IP = data.azurerm_key_vault_secret.secret_rc-car-server-ip.value
+    API_TOKEN = data.azurerm_key_vault_secret.secret_rc-car-api-token.value
+  }
+
   auth_settings{
     enabled = true
     default_provider = "AzureActiveDirectory"
@@ -60,7 +75,7 @@ resource "azurerm_app_service" "example" {
   }
 
   site_config {
-    linux_fx_version = "PHP|7.4"
+    linux_fx_version = "PHP|7.3"
     scm_type         = "LocalGit"
     use_32_bit_worker_process = true
   }
