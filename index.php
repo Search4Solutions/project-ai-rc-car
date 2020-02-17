@@ -48,8 +48,10 @@
 			<?php 
 				if ($_SERVER["REQUEST_METHOD"] == "POST")
 				{
-					$url_direction = '<your ip here>/direction?apikey=<your api key here>';
-					$url_speed = '<your ip here>/speed?apikey=<your api key here>';
+					$server_ip = getenv("SERVER_IP");
+					$api_token = getenv("API_TOKEN");
+					$url_direction = "$server_ip/direction?apikey=$api_token";
+					$url_speed = "$server_ip/speed?apikey=$api_token";
 	
 					if(isset($_POST['direction']))
 					{
@@ -73,7 +75,7 @@
 					$context  = stream_context_create($options);
 					$result = file_get_contents($url, false, $context);
 					if ($result === FALSE) { 
-						echo("<div class=\"console\"> ERROR: Cannot reach API. </div>"); 
+						echo("<div class=\"console\"> ERROR: Cannot reach API. @$server_ip </div>"); 
 					}
 					else { echo("<div class=\"console\"> $result </div>"); }
 				}
